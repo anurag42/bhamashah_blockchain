@@ -4,13 +4,13 @@
 <html>
 <head>
 	<title>Kisaan Profile</title>
-	<link rel="stylesheet" href="../styles/sheets/bootstrap.css">
-	<link rel="stylesheet" href="../styles/sheets/font-awesome.css">
-	<link rel="stylesheet" href="../styles/sheets/tradepage.css">
+	<link rel="stylesheet" href="/sheets/bootstrap.css">
+	<link rel="stylesheet" href="/sheets/font-awesome.css">
+	<link rel="stylesheet" href="/sheets/tradepage.css">
 	<style>
 		body{
 			font-family: raleway-light;
-            background:url("../styles/images/back_log_kishan.jpg");
+            background:url("/images/back_log_kishan.jpg");
             background-size:100%;
             height:100%;
             width:100%;
@@ -18,7 +18,7 @@
 		@font-face{
 
             font-family: "panton-bold";
-            src: url("../styles/fonts/Panton-BlackCaps.otf");
+            src: url("/fonts/Panton-BlackCaps.otf");
 
         }
         .page-header{
@@ -173,8 +173,8 @@
 	</style>
 </head>
 <body window.onload="onload()">
-   <div class=""><img src="../styles/images/zeonlab_logo.png" class="zeon_logo"></div>
-  <div><img src="../styles/images/raj_kishan_logo.png" class="zlogo"></div>
+   <div class=""><img src="/images/zeonlab_logo.png" class="zeon_logo"></div>
+  <div><img src="/images/raj_kishan_logo.png" class="zlogo"></div>
 	<nav class="navbar navbar-default">
 <div class="container-fluid">
 	<div class="navbar-header">
@@ -197,9 +197,9 @@
    <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div class="well">
-        <p class="pitxt"><img src="../styles/images/User.png" class="rnd"><strong>User Name: </strong> <%= kisaan.name %></p><hr>
-				<p class="pitxt"><img src="../styles/images/User.png" class="rnd"><strong>Aadhar Number: </strong> <%= kisaan.aadhar %></p><hr>
-        <p class="pitxt"><img src="../styles/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p><hr>
+        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong> <%= kisaan.name %></p><hr>
+				<p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Aadhar Number: </strong> <%= kisaan.aadhar %></p><hr>
+        <p class="pitxt"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p><hr>
 				<form enctype = "multipart/form-data" >
 					<div class="form-group">
 					        <input type="hidden" class="form-control" id="kisaan" name="kisaan" value="<%= kisaan.aadhar%>">
@@ -219,9 +219,9 @@
 
 
 </body>
-<script type="text/javascript" src="../styles/js/jquery.1.11.1.js"></script>
-<script type="text/javascript" src="../styles/js/bootstrap.js"></script>
-<script type="text/javascript" src="../styles/js/sha256.js"></script>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/sha256.js"></script>
 <script>
   function transferZen() {
   var xhttp = new XMLHttpRequest();

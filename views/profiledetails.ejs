@@ -4,13 +4,13 @@
 <html>
 <head>
 	<title><%= user.role %>/Trade Dashboard</title>
-	<link rel="stylesheet" href="../styles/sheets/bootstrap.css">
-	<link rel="stylesheet" href="../styles/sheets/font-awesome.css">
-	<link rel="stylesheet" href="../styles/sheets/tradepage.css">
+	<link rel="stylesheet" href="/sheets/bootstrap.css">
+	<link rel="stylesheet" href="/sheets/font-awesome.css">
+	<link rel="stylesheet" href="/sheets/tradepage.css">
 	<style>
 		body{
 			font-family: raleway-light;
-            background:url("../styles/images/back_log_kishan.jpg");
+            background:url("/images/back_log_kishan.jpg");
             background-size:100%;
             height:100%;
             width:100%;
@@ -18,7 +18,7 @@
 		@font-face{
 
             font-family: "panton-bold";
-            src: url("../styles/fonts/Panton-BlackCaps.otf");
+            src: url("/fonts/Panton-BlackCaps.otf");
 
         }
         .page-header{
@@ -172,7 +172,7 @@
 	</style>
 </head>
 <body window.onload="onload()">
-    <div class=""><img src="../styles/images/zeonlab_logo.png" class="zeon_logo"></div>
+    <div class=""><img src="/images/zeonlab_logo.png" class="zeon_logo"></div>
 	<nav class="navbar navbar-default">
 <div class="container-fluid">
 	<div class="navbar-header">
@@ -186,7 +186,7 @@
 </div>
 </nav>
 
-  <div><img src="../styles/images/raj_kishan_logo.png" class="zlogo"></div>
+  <div><img src="/images/raj_kishan_logo.png" class="zlogo"></div>
 	<div class="container">
 		<div class="page-header text-center">
 			<h1 class="head1"> PROFILE DETAILS</h1>
@@ -195,12 +195,12 @@
     <div class="col-sm-8">
       <div class="well">
 
-        <p class="pitxt"><img src="../styles/images/User.png" class="rnd"><strong>Your Role: </strong> <%= user.role %></p><hr>
-        <p class="pitxt"><img src="../styles/images/User.png" class="rnd"><strong>User Name: </strong> <%= user.username %></p><hr>
+        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Your Role: </strong> <%= user.role %></p><hr>
+        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong> <%= user.username %></p><hr>
         <p class="pitxt"><img src="/images/Address.png" class="rnd"><strong>Blockchain Address: </strong><span class="pitxt"><%= user.ethereumAddress %></span></p><hr>
 
-        <p class="pitxt"><img src="../styles/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p><hr>
-        <p class="pitxt"><img src="../styles/images/KYC.png" class="rnd"><strong>SHA 256 Hash of KYC Docs </strong></p>
+        <p class="pitxt"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p><hr>
+        <p class="pitxt"><img src="/images/KYC.png" class="rnd"><strong>SHA 256 Hash of KYC Docs </strong></p>
 				<table><tbody id="KYChash"></tbody></table><br>
         <!--<span class="pitxt"><%= user.kychash %></span><br>-->
 				<!--<form id='submit' action="/filedownload" method="post" enctype = "application/x-www-form-urlencoded">
@@ -217,7 +217,7 @@
     </div>
 		<div class="col-sm-4">
 			<div class="well idea">
-				<img src="../styles/images/Tip_2.png" class="tip">
+				<img src="/images/Tip_2.png" class="tip">
 				<p class="ideatxt">
 					The hash of KYC doc has been stored in the blockchain.
 					Once the hash is stored, it can not be changed or
@@ -248,9 +248,9 @@
 </div>
 
 </body>
-<script type="text/javascript" src="../styles/js/jquery.1.11.1.js"></script>
-<script type="text/javascript" src="../styles/js/bootstrap.js"></script>
-<script type="text/javascript" src="../styles/js/sha256.js"></script>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/sha256.js"></script>
 <script>
         $(".kycdnld").click(function(){
 
