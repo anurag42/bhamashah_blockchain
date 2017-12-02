@@ -353,7 +353,7 @@
 		</div>
 
 	</div>
-	<p><a href="/tradeCoins" class="btn btn-warning">1 RajasthanCoin  = 1 INR</a></p>
+	<p><a class="btn btn-warning">1 RajasthanCoin  = 1 INR</a></p>
 </div>
 
 </div>
@@ -369,8 +369,8 @@
 	console.log(kisaanList.length);
 	for (i = 0; i < kisaanList.length; ++i) {
 		var tr = "<tr>";
-		tr += '<td style="display:block;">' + kisaanList[i] + "</td><td>" + '<input type="checkbox" id="checkbox" onchange="enableTxtbx('+kisaanAadharList[i]+')">'+ "</td><td>"+'<input disabled="" id='+kisaanAadharList[i]+' type="number" placeholder="Enter Amount">'+"</td><td>"+'<button href='+kisaanAadharList[i]+' class="viewbtn" onclick="getTradeDetails(this)"><img src="/images/View.png" class="viewimg">Send RAJTokens</button><img src="/images/loader.gif" class="loaderbtngif"></td></tr>';
-		thead.innerHTML = '<tr><th>Kisaan Name</th><th>Select Farmer</th><th>Input Amount</th><th>Pay Kisaan</th></tr>';
+		tr += '<td style="display:block;">' + kisaanList[i] + "</td><td>" +'<input class="form-control" id='+kisaanAadharList[i]+' type="number" placeholder="Enter Amount in RajasthanCoins">'+"</td><td>"+'<button href='+kisaanAadharList[i]+' class="viewbtn" onclick="getTradeDetails(this)">Send RAJTokens</button></td></tr>';
+		thead.innerHTML = '<tr><th>Kisaan Name</th><th>Input Amount</th><th>Pay Kisaan</th></tr>';
 		tbody.innerHTML = tr + tbody.innerHTML;
 		// $('#checkbox').change(function(){
 	  //  $("#amountBox").prop("disabled", !$(this).is(':checked'));
@@ -384,10 +384,6 @@
 	$(document).ready(function(){
 		$('[data-toggle="popover"]').popover();
 	});
-	function enableTxtbx(kal){
-
-			$('#'+kal).prop("disabled", false);
-
-	}
+	
 </script>
 </html>
