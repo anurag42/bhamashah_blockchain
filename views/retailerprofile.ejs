@@ -4,19 +4,28 @@
 <html>
 <head>
 	<title><%= user.role %>/Trade Dashboard</title>
-	<link rel="stylesheet" href="/sheets/bootstrap.css">
-	<link rel="stylesheet" href="/sheets/font-awesome.css">
-	<link rel="stylesheet" href="/sheets/tradepage.css">
+	<link rel="stylesheet" href="../styles/sheets/bootstrap.css">
+	<link rel="stylesheet" href="../styles/sheets/font-awesome.css">
+	<link rel="stylesheet" href="../styles/sheets/tradepage.css">
 	<style>
+	@font-face{
+
+            font-family: "raleway";
+            src: url("../styles/fonts/Raleway-Light.ttf");
+
+        }
 		body{
-			//padding-top:80px;
-			word-wrap:break-word;
-			background-color: #f5f5f5;
+			font-family: raleway-light;
+            background:url("../styles/images/back_log_kishan.jpg");
+            background-size:100%;
+            height:100%;
+            width:100%;
+            font-family: "raleway";
 		}
 		@font-face{
 
             font-family: "panton-bold";
-            src: url("/fonts/Panton-BlackCaps.otf");
+            src: url("../styles/fonts/Panton-BlackCaps.otf");
 
         }
         .page-header{
@@ -25,14 +34,15 @@
 
         }
 		.zlogo{
-
-            display:block;
-            margin:0px auto;
-            width:260px;
-            margin-top:0px;
-            margin-bottom:20px;
-
-        }
+            text-align: left;
+            display: block;
+            margin: 0px auto;
+            width: 150px;
+            margin-bottom: 20px;
+            float: left;
+            margin-top:20px;
+            margin-left:20px;
+}
         .head1{
 
 			font-family: "panton-bold";
@@ -159,14 +169,25 @@
 						display: inline;
 
 				}
+				.zeon_logo {
+            width: 150px;
+            float: right;
+            margin-right: 20px;
+            margin-top:20px;
+        }
+        .navbar-default .navbar-nav>li>a{
+           margin-top:15px;
+        }
 
 	</style>
 </head>
 <body window.onload="onload()">
+     <div class=""><img src="../styles/images/zeonlab_logo.png" class="zeon_logo"></div>
+  <div><img src="../styles/images/raj_kishan_logo.png" class="zlogo"></div>
 	<nav class="navbar navbar-default">
 <div class="container-fluid">
 	<div class="navbar-header">
-	<a class="navbar-brand" href="#"><img src ="/images/zeonlab_logo.png" alt="Zeonlab-Blockchain" class="logo"></a>
+	<a class="navbar-brand" href="#"></a>
 	</div>
 	<ul class="nav navbar-nav navbar-right navhide">
 		<li><a href="/profiledetails">PROFILE DETAILS</a></li>
@@ -233,9 +254,9 @@
 </div>
 
 </body>
-<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript" src="/js/sha256.js"></script>
+<script type="text/javascript" src="../styles/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="../styles/js/bootstrap.js"></script>
+<script type="text/javascript" src="../styles/js/sha256.js"></script>
 <script>
         $(".kycdnld").click(function(){
 
