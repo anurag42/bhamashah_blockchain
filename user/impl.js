@@ -48,7 +48,7 @@ module.exports = {
   },
 
   getRetailerLogin: function(req, res) {
-    res.render('retailerlogin.ejs', {
+    res.render('retlogin.ejs', {
       message: ""
     });
   },
