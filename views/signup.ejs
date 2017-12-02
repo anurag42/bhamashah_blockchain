@@ -207,14 +207,10 @@
 <div><img src="../styles/images/raj_kishan_logo.png" class="zlogo"></div>
     <div class="container">
         <div class="col-sm-4 col-sm-offset-4">
-<<<<<<< Updated upstream:views/signup.ejs
-            <img src="/images/raj_kishan_logo.png" class="zlogo">
-=======
             <h1 class="loginh1">Sign up</h1>
->>>>>>> Stashed changes:views/signup.html
-            <!--<% if (message) { %>-->
-            <!--<div class="alert alert-danger"><%= message %></div>-->
-            <!--<% } %>-->
+            <% if (message) { %>
+            <div class="alert alert-danger"><%= message %></div>
+            <% } %>
             <!-- SIGNUP FORM -->
             <form action="/signup" method="post" enctype = "multipart/form-data" >
                 <div class="form-group">
