@@ -1,0 +1,362 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title><%= user.role %>/Trade Dashboard</title>
+	<link rel="stylesheet" href="/sheets/bootstrap.css">
+	<link rel="stylesheet" href="/sheets/font-awesome.css">
+
+	<style>
+	@font-face{
+
+	font-family: "panton-bold";
+	src: url("/fonts/Panton-BlackCaps.otf");
+
+}
+@font-face {
+   	font-family: "montserrat-regular";
+    	src: url("/fonts/Montserrat-Regular.otf");
+}
+@font-face {
+   	font-family: "montserrat-light";
+    	src: url("/fonts/Montserrat-Light.otf");
+}
+@font-face {
+   	font-family: "panton-light";
+    	src: url("/fonts/Panton-LightCaps.otf");
+}
+	.navbar{
+
+	width: 100%;
+	border-radius:0px;
+	margin-bottom:0px;
+	background-color: transparent;
+  border-color: transparent;
+
+}
+
+.navbar-brand{
+
+	font-family: "panton-bold";
+	font-size:20px;
+	padding-left:50px;
+
+}
+.navbar-right{
+
+	font-family: "montserrat-regular";
+	margin-right:30px;
+	font-size:10px;
+	font-weight:bold;
+	color:black;
+	letter-spacing:1px;
+}
+.logo
+{
+
+    width: 150px;
+    margin-top: -6px;
+		margin-left: -30px;
+}
+
+.navbar-right>li>a::after{
+
+	content:"•";
+	position:relative;
+	left:15px;
+	top:-1px;
+
+}
+
+.rdot::after{
+
+	display:none;
+
+}
+
+		body{
+			//padding-top:80px;
+			word-wrap:break-word;
+			background-color: #f5f5f5;
+			//background:url("/images/loginbg.jpg");
+		}
+		table{
+
+			width:100%;
+
+		}
+		td{
+
+			padding-right:20px;
+			font-size:12px;
+
+		}
+		th{
+
+			font-size: 12px;
+
+		}
+		.form-control{
+
+			font-size: 12px;
+
+		}
+
+		@font-face{
+
+			font-family: "panton-bold";
+			src: url("/fonts/Panton-BlackCaps.otf");
+
+		}
+		.page-header{
+
+			border-bottom:0px;
+
+		}
+		.zlogo{
+
+			display:block;
+			margin:0px auto;
+			width:260px;
+			margin-top:0px;
+			margin-bottom:20px;
+
+		}
+		.head1{
+
+			font-family: "panton-bold";
+			font-size:20px;
+
+		}
+		.logotbtn{
+
+			margin-right:-85%;
+
+		}
+		h3{
+
+			text-align:center;
+			font-size:12px;
+			font-weight:bold;
+			margin-bottom:20px;
+			margin-top:0px;
+
+		}
+		.btn{
+
+			font-size: 12px;
+
+		}
+		.idea{
+
+			background-color:lightblue !important ;
+			text-align:center;
+
+		}
+		.tip{
+
+			width:50px;
+			margin:10px 0px 20px;
+
+		}
+		.kycdnld{
+
+			font-size:14px;
+			font-weight:bold;
+			width:67%;
+			margin:0px auto;
+			padding-top:5px;
+			padding-bottom:4px;
+			color:#262626;
+
+		}
+		.dnldimg{
+
+			width:30px;
+
+		}
+		.pitxt{
+
+			font-size:12px;
+
+		}
+
+		.well{
+
+			background:white;
+
+		}
+		.rnd{
+
+			width: 40px;
+			margin-right:8px;
+
+		}
+		.trackId{
+			font-size: 12px;
+		}
+		#kisaan_list{
+
+			font-size:12px;
+
+		}
+		#kisaan_list tr>td>a:before{
+
+			content: "Tracking ID:";
+
+		}
+		#no_trade{
+			text-align: center;
+			height:315px;
+		}
+		.viewbtn{
+
+			background:white;
+			border:1px solid lightgray;
+			padding:3px 6px;
+			border-radius:3px;
+			color:#666666;
+			font-size:12px;
+
+		}
+		.viewimg{
+
+			width:22px;
+			margin-right:5px;
+
+		}
+		.icon{
+
+			color: gray;
+			float: right;
+			margin-top: -25px;
+			margin-right: 13px;
+			font-size:18px;
+		}
+		.ideatxt{
+
+			text-align:left;
+			font-size: 12px;
+
+		}
+		.trbtn{
+
+			color:black;
+			padding:5px 10px;
+			border-radius:3px;
+			font-size:14px;
+			font-weight:bold;
+			position:relative;
+			left:66%;
+		}
+		.modal-header {
+
+			padding: 15px;
+			border-bottom: 1px solid white;
+
+		}
+		.loadergif{
+
+			text-align:center;
+			width:150px;
+
+		}
+		.loaderbtngif{
+
+			margin-top: 5px;
+			width: 35px;
+			display: none;
+			margin-left: 25px;
+
+		}
+		#triggermodal{
+
+			text-align:center;
+
+		}
+		.popover {
+			color: white;
+			background: #5D7CFF;
+			width:250px;
+		}
+		.popover.top .arrow::after{
+
+			border-top-color: #5D7CFF;
+
+		}
+		.popover-content::before{
+
+			content:" ";
+			background:url("/images/Tip.png") no-repeat;
+			background-size:contain;
+			height:40px;
+			width:40px;
+			display: inline-block;
+			vertical-align:top;
+			float:left;
+			margin-right:5px;
+
+		}
+
+
+
+	</style>
+</head>
+<body window.onload="onload()">
+	<nav class="navbar navbar-default">
+<div class="container-fluid">
+	<div class="navbar-header">
+	<a class="navbar-brand" href="#"><img src ="/images/zeonlab_logo.png" alt="Zeonlab-Blockchain" class="logo"></a>
+	</div>
+	<ul class="nav navbar-nav navbar-right navhide">
+			<li><a href="/profiledetails">PROFILE DETAILS</a></li>
+			<li><a href="/profile">TRADE DASHBOARD</a></li>
+	<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
+	</ul>
+</div>
+</nav>
+	<div class="container">
+
+		<div class="page-header text-center">
+			<h1 class="head1"> Trade Dashboard</h1>
+		</div>
+
+		<div class="row">
+
+			<div class="col-sm-8">
+			<div class="well" id="show_well">
+				<div id="LiveTrade">
+					<h3> List of Transactions </h3>
+					<table>
+						<thead id="transaction_header">
+						</thead>
+						<tbody id="transaction_list"></tbody>
+					</table
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+		</div>
+	</div>
+</div>
+
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script>
+	var tbody = document.getElementById('transaction_list');
+	var thead = document.getElementById('transaction_header');
+	var transactionToArray="<%= transactionToArray%>".split(',');
+	var transactionAmountArray="<%= transactionAmountArray%>".split(',');
+	for (i = 0; i < transactionToArray.length; ++i) {
+		var tr = "<tr>";
+		tr += '<td style="display:block;">' + transactionToArray[i] + "</td><td>"+ transactionAmountArray[i] +'</tr>';
+		thead.innerHTML = '<tr><th>Transaction To</th><th>Transaction Amount</th></tr>';
+		tbody.innerHTML = tr + tbody.innerHTML;
+	}
+	$(document).ready(function(){
+		$('[data-toggle="popover"]').popover();
+	});
+</script>
+</html>

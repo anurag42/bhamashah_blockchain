@@ -1,0 +1,140 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Exchange</title>
+    <link rel="stylesheet" href="/sheets/bootstrap.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/sheets/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body{
+            padding-top:80px;
+            background:url("/images/loginbg.jpg");
+            background-size:cover;
+            height:100%;
+            width:100%;
+        }
+        @font-face{
+
+            font-family: "panton-bold";
+            src: url("/fonts/Panton-BlackCaps.otf");
+
+        }
+        .zlogo{
+
+            display:block;
+            margin:0px auto;
+            width:260px;
+            margin-top:8%;
+            margin-bottom:20px;
+
+        }
+        .loginh1{
+
+            font-size:18px;
+            text-align:center;
+            font-family: "panton-bold";
+            margin-top:50px;
+            margin-bottom:30px;
+
+        }
+        .loginbtn{
+
+            float:right;
+            color:black;
+            padding:5px 10px;
+            border-radius:3px;
+            font-size:14px;
+            font-weight:bold;
+
+        }
+        .icon{
+
+            color: gray;
+            float: right;
+            margin-top: -25px;
+            margin-right: 13px;
+            font-size:18px;
+        }
+        .alert {
+            padding: 7px 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-4 col-sm-offset-4">
+    <img src="/images/zeonlab_logo.png" class="zlogo">
+    <h1 class="loginh1">Exchange Ether to ZEN Coins</h1>
+
+    <!-- LOGIN FORM -->
+    <form>
+      <div class="col-md-12 col-sm-12">
+      <span id="status" style="text-align: center"></span>
+    </div>
+      <div class="col-md-12 col-sm-12">
+      <a href="/login" class="btn" style=""><span class="fa fa-chevron-left"></span></a>
+      <span><label class="inline">Exchange Rate:</label>   1 RAJCOIN = 1 INR</span>
+    </div>
+    <!--<div class="col-md-6 col-sm-6">
+      <label>Deposit Min</label>
+      0.05 ETH
+    </div>-->
+    <div class="col-md-12 col-sm-12" style="text-align: center">
+      <label>Miner Fee:</label>
+      100 INR
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <span>
+          <img src="/images/rupee.png" style="height: 25px;">
+      </span>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <span class="fa fa-arrow-right"></span>
+    </div>
+    <div class="col-md-4 col-sm-4">
+      <span>
+          <img src="/images/zeonlab_logo.png" style="height: 25px;">
+      </span>
+    </div>
+        <div class="form-group">
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount of tokens you wish to buy">
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <input type="checkbox" name="terms" required></input>
+          <a href="/files/ZeonLab_Terms&Conditions.pdf">I agree to terms</a>
+        </div>
+    </form>
+    <button type="submit" class="btn btn-warning btn-lg loginbtn" onclick="exchangeEth2Zen()">Start Transaction</button>
+    <p><p><a href="/checkbalance">Check Balance</a></p></p>
+</div>
+</div>
+</body>
+<script>
+function exchangeEth2Zen() {
+  var xhttp = new XMLHttpRequest();
+  document.getElementById("status").innerHTML = "Transaction sent....Awaiting Response";
+  //var address = encodeURIComponent(document.getElementById("address").value);
+  //var pvtkey = encodeURIComponent(document.getElementById("pvtkey").value);
+  var amount = encodeURIComponent(document.getElementById("amount").value);
+  var parameters = "address=" + "09" + "&pvtkey=" + "090" + "&amount=" + amount;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(xhttp.responseText == -1){
+
+      }
+      else{
+        var res = JSON.parse(xhttp.responseText);
+        document.getElementById("status").innerHTML = "Transaction successful";
+        console.log("Status", res.status);
+      }
+    }
+  }
+
+    xhttp.open("POST", "/tradeCoins", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(parameters);
+}
+</script>
+</html>

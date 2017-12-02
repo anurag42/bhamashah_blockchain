@@ -1,0 +1,316 @@
+fertTokenABI = [{
+  "constant": true,
+  "inputs": [],
+  "name": "name",
+  "outputs": [{
+    "name": "",
+    "type": "string"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": true,
+  "inputs": [],
+  "name": "totalSupply",
+  "outputs": [{
+    "name": "",
+    "type": "uint256"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "sender",
+    "type": "address"
+  }, {
+    "name": "redeemAmount",
+    "type": "uint256"
+  }],
+  "name": "redeem",
+  "outputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "constant": true,
+  "inputs": [],
+  "name": "decimals",
+  "outputs": [{
+    "name": "",
+    "type": "uint8"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": true,
+  "inputs": [],
+  "name": "version",
+  "outputs": [{
+    "name": "",
+    "type": "string"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "_to",
+    "type": "bytes32"
+  }, {
+    "name": "_value",
+    "type": "uint256"
+  }],
+  "name": "transfer",
+  "outputs": [{
+    "name": "success",
+    "type": "bool"
+  }],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "constant": true,
+  "inputs": [{
+    "name": "_owner",
+    "type": "bytes32"
+  }],
+  "name": "balanceOf",
+  "outputs": [{
+    "name": "balance",
+    "type": "uint256"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": true,
+  "inputs": [],
+  "name": "symbol",
+  "outputs": [{
+    "name": "",
+    "type": "string"
+  }],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "_hash",
+    "type": "address"
+  }],
+  "name": "getKYChash",
+  "outputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "sender",
+    "type": "address"
+  }, {
+    "name": "recepients",
+    "type": "bytes32[]"
+  }, {
+    "name": "tokenAmounts",
+    "type": "uint256[]"
+  }],
+  "name": "recordFertIssue",
+  "outputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "uid",
+    "type": "bytes32"
+  }],
+  "name": "deposit",
+  "outputs": [],
+  "payable": true,
+  "stateMutability": "payable",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "_userID",
+    "type": "bytes32"
+  }, {
+    "name": "_userHash",
+    "type": "address"
+  }, {
+    "name": "KYChash",
+    "type": "bytes"
+  }],
+  "name": "submitKYC",
+  "outputs": [{
+    "name": "",
+    "type": "bool"
+  }],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "constant": false,
+  "inputs": [{
+    "name": "uid",
+    "type": "bytes32"
+  }, {
+    "name": "claimedBy",
+    "type": "bytes32"
+  }, {
+    "name": "dealer",
+    "type": "address"
+  }, {
+    "name": "claimAmount",
+    "type": "uint256"
+  }],
+  "name": "claimFert",
+  "outputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+}, {
+  "inputs": [{
+    "name": "_initialAmount",
+    "type": "uint256"
+  }, {
+    "name": "_tokenName",
+    "type": "string"
+  }, {
+    "name": "_decimalUnits",
+    "type": "uint8"
+  }, {
+    "name": "_tokenSymbol",
+    "type": "string"
+  }, {
+    "name": "_ownerID",
+    "type": "bytes32"
+  }],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+}, {
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "fallback"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "userHash",
+    "type": "address"
+  }],
+  "name": "LogSubmitted",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "userHash",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "name": "hash",
+    "type": "bytes"
+  }],
+  "name": "LogGetKYChash",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "sender",
+    "type": "address"
+  }],
+  "name": "LogFertIssued",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "uid",
+    "type": "bytes32"
+  }, {
+    "indexed": true,
+    "name": "claimedBy",
+    "type": "bytes32"
+  }, {
+    "indexed": true,
+    "name": "dealer",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "name": "claimAmount",
+    "type": "uint256"
+  }],
+  "name": "LogFertClaimed",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "sender",
+    "type": "address"
+  }, {
+    "indexed": false,
+    "name": "redeemAmount",
+    "type": "uint256"
+  }],
+  "name": "LogRedeemed",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": false,
+    "name": "uid",
+    "type": "bytes32"
+  }, {
+    "indexed": false,
+    "name": "amount",
+    "type": "uint256"
+  }],
+  "name": "LogDeposit",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "_from",
+    "type": "bytes32"
+  }, {
+    "indexed": true,
+    "name": "_to",
+    "type": "bytes32"
+  }, {
+    "indexed": false,
+    "name": "_value",
+    "type": "uint256"
+  }],
+  "name": "Transfer",
+  "type": "event"
+}, {
+  "anonymous": false,
+  "inputs": [{
+    "indexed": true,
+    "name": "_owner",
+    "type": "bytes32"
+  }, {
+    "indexed": true,
+    "name": "_spender",
+    "type": "bytes32"
+  }, {
+    "indexed": false,
+    "name": "_value",
+    "type": "uint256"
+  }],
+  "name": "Approval",
+  "type": "event"
+}];

@@ -1,0 +1,123 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Exchange</title>
+    <link rel="stylesheet" href="/sheets/bootstrap.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/sheets/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body{
+            padding-top:80px;
+            background:url("/images/loginbg.jpg");
+            background-size:cover;
+            height:100%;
+            width:100%;
+        }
+        @font-face{
+
+            font-family: "panton-bold";
+            src: url("/fonts/Panton-BlackCaps.otf");
+
+        }
+        .zlogo{
+
+            display:block;
+            margin:0px auto;
+            width:260px;
+            margin-top:8%;
+            margin-bottom:20px;
+
+        }
+        .loginh1{
+
+            font-size:18px;
+            text-align:center;
+            font-family: "panton-bold";
+            margin-top:50px;
+            margin-bottom:30px;
+
+        }
+        .loginbtn{
+
+            float:right;
+            color:black;
+            padding:5px 10px;
+            border-radius:3px;
+            font-size:14px;
+            font-weight:bold;
+
+        }
+        .icon{
+
+            color: gray;
+            float: right;
+            margin-top: -25px;
+            margin-right: 13px;
+            font-size:18px;
+        }
+        .alert {
+            padding: 7px 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-4 col-sm-offset-4">
+    <img src="/images/zeonlab_logo.png" class="zlogo">
+    <h1 class="loginh1">Check ETH & ZEN Token Balance</h1>
+
+    <div class="col-md-12 col-sm-12">
+      <span type="text" id="eth_balance">
+      </span>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <span type="text" id="zen_balance">
+      </span>
+    </div>
+    <!-- LOGIN FORM -->
+    <form>
+        <div class="form-group">
+            <input type="text" class="form-control" id="address" name="address" placeholder="Your ETH Address">
+        </div>
+    </form>
+    <hr>
+    <p>Need an account? <a href="/signup">Signup</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+<script>
+$("#address").focus(function() {
+    console.log('in');
+}).blur(function() {
+    console.log('out');
+    getZenBalance();
+});
+
+function getZenBalance() {
+  var xhttp = new XMLHttpRequest();
+  var address = encodeURIComponent(document.getElementById("address").value);
+  var parameters = "address=" + address;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(xhttp.responseText == -1){
+
+      }
+      else{
+        var res = JSON.parse(xhttp.responseText);
+        document.getElementById("zen_balance").innerHTML = '<img src="/images/zeonlab_logo.png" style="height: 25px;"><b>Balance: </b>' + res.zenBalance + " ZEN";
+        document.getElementById("eth_balance").innerHTML = '<img src="/images/ether.png" style="height: 25px;"><b>Balance: </b>' + res.ethBalance + " ETH";
+        console.log("Status", res);
+      }
+    }
+  }
+
+    xhttp.open("POST", "/checkbalance", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(parameters);
+}
+</script>
+</html>

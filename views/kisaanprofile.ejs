@@ -1,0 +1,254 @@
+<!-- LOCAL INFORMATION -->
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>Kisaan Profile</title>
+	<link rel="stylesheet" href="/sheets/bootstrap.css">
+	<link rel="stylesheet" href="/sheets/font-awesome.css">
+	<link rel="stylesheet" href="/sheets/tradepage.css">
+	<style>
+		body{
+			//padding-top:80px;
+			word-wrap:break-word;
+			background-color: #f5f5f5;
+		}
+		@font-face{
+
+            font-family: "panton-bold";
+            src: url("/fonts/Panton-BlackCaps.otf");
+
+        }
+        .page-header{
+
+        	border-bottom:0px;
+
+        }
+		.zlogo{
+
+            display:block;
+            margin:0px auto;
+            width:260px;
+            margin-top:0px;
+            margin-bottom:20px;
+
+        }
+        .head1{
+
+			font-family: "panton-bold";
+			font-size:20px;
+
+        }
+        .logotbtn{
+
+        	margin-right:-94%;
+
+        }
+        h3{
+
+			text-align:center;
+			font-size:16px;
+			font-weight:bold;
+			margin-bottom:20px;
+			margin-top:0px;
+
+        }
+        .idea{
+
+			background-color:lightblue !important ;
+			text-align:center;
+
+		}
+        .tip{
+
+					width: 50px;
+    			margin: 10px 0px 20px;
+
+        }
+        .kycdnld{
+					display:inline-block;
+        	font-size:12px;
+        	font-weight:bold;
+        	width:125px;
+        	//margin:0px auto;
+        	padding-top:5px;
+        	padding-bottom:4px;
+        	color:#262626;
+					text-align: left;
+					margin-left: 10px;
+
+        }
+        .dnldimg{
+
+        	width:20px;
+
+        }
+        .pitxt{
+
+        	font-size:12px;
+
+        }
+
+        .well{
+
+        	background:white;
+
+        }
+        .rnd{
+
+        width: 40px;
+        margin-right:8px;
+
+    	}
+    	.trackId{
+    	width: 79%;
+    	font-size: 13px;
+    	}
+        #ongoing_trades{
+
+        	font-size:12px;
+
+        }
+        #ongoing_trades tr>td>a:before{
+
+        	content: "Tracking ID:";
+
+        }
+		.viewbtn{
+
+			background:white;
+			border:1px solid lightgray;
+			padding:4px 10px;
+			border-radius:3px;
+			color:#666666;
+			font-size:13px;
+
+		}
+		.viewimg{
+
+			width:30px;
+			margin-right:5px;
+
+		}
+        .icon{
+
+            color: gray;
+            float: right;
+            margin-top: -25px;
+            margin-right: 13px;
+            font-size:18px;
+        }
+        .ideatxt{
+
+        	text-align:left;
+					font-size: 12px;
+
+        }
+        .trbtn{
+
+            color:black;
+            padding:5px 10px;
+            border-radius:3px;
+            font-size:14px;
+            font-weight:bold;
+            position:relative;
+            left:66%;
+        }
+				form{
+
+						display: inline;
+
+				}
+
+	</style>
+</head>
+<body window.onload="onload()">
+	<nav class="navbar navbar-default">
+<div class="container-fluid">
+	<div class="navbar-header">
+	<a class="navbar-brand" href="#"><img src ="/images/zeonlab_logo.png" alt="Zeonlab-Blockchain" class="logo"></a>
+	</div>
+	<ul class="nav navbar-nav navbar-right navhide">
+		<li><a href="/profiledetails">PROFILE DETAILS</a></li>
+		<li><a href="/profile">TRADE DASHBOARD</a></li>
+<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
+	</ul>
+</div>
+</nav>
+	<div class="container">
+		<div class="page-header text-center">
+			<h1 class="head1"> PROFILE DETAILS</h1>
+		</div>
+
+		<span id="status" style="text-align: center"></span>
+
+
+    <div class="col-sm-8">
+      <div class="well">
+
+        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong> <%= kisaan.name %></p><hr>
+				<p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Aadhar Number: </strong> <%= kisaan.aadhar %></p><hr>
+        <p class="pitxt"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p><hr>
+				<form enctype = "multipart/form-data" >
+					<div class="form-group">
+					        <input type="hidden" class="form-control" id="kisaan" name="kisaan" value="<%= kisaan.aadhar%>">
+							<input type="text" class="form-control" id="dealeraddress" name="dealeraddress" placeholder="Dealer Address" required>
+							<span class="fa fa-user icon"></span>
+					</div>
+					<div class="form-group">
+							<input type="number" class="form-control" id="amount" name="amount" placeholder="Coins to Pay" required>
+							<span class="fa fa-user icon"></span>
+					</div>
+			</form>
+			<button type="submit" class="btn btn-warning btn-lg loginbtn" onclick="transferZen()">Pay using RAJCOIN</button>
+    </div>
+    </div>
+		<div class="col-sm-4">
+
+<!-- BCdnld Modal -->
+	<div id="bcdnldmodal" class="modal fade" role="dialog">
+		<div class="modal-dialog" style="width:400px;">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body" style="padding-top:30px;">
+                    <p>Please hang on while we download this document from blockchain. This may take a while..</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/sha256.js"></script>
+<script>
+  function transferZen() {
+  var xhttp = new XMLHttpRequest();
+  document.getElementById("status").innerHTML = "Transaction sent....Awaiting Response";
+  var address = encodeURIComponent(document.getElementById("kisaan").value);
+  var dealer = encodeURIComponent(document.getElementById("dealeraddress").value);
+  var amount = encodeURIComponent(document.getElementById("amount").value);
+  var parameters = "address=" + address + "&dealer=" + dealer + "&amount=" + amount;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(xhttp.responseText == -1){
+
+      }
+      else{
+        var res = JSON.parse(xhttp.responseText);
+        document.getElementById("status").innerHTML = "Transaction successful";
+        console.log("Status", res.status);
+      }
+    }
+  }
+
+    xhttp.open("POST", "/claimFertIssue", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(parameters);
+}
+</script>
