@@ -19,6 +19,10 @@ module.exports = {
     });
   },
 
+  getListOfClaims: function(callback) {
+    claimTxn.find({}, callback);
+  },
+
   updateExchangeEntry: function(query, update) {
     var options = {
       multi: true

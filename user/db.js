@@ -17,7 +17,7 @@ module.exports = {
       '_id': req.session.userId
     }, callback);
   },
-  createNewUser: function(account, hash, req, res, callback) {
+  createNewUser: function(account, hash, req, callback) {
     var newUser = new User();
     // set the user's credentials
     newUser.username = req.body.username;

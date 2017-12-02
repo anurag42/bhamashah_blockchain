@@ -1,4 +1,4 @@
-<!-- views/login.ejs -->
+<!-- vilogin.html.ejs -->
 <!doctype html>
 <html>
 <head>
@@ -6,15 +6,23 @@
     <link rel="stylesheet" href="/sheets/bootstrap.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="/sheets/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
+
+        @font-face {
+                font-family: raleway-bold;
+                src: url(/fonts/Raleway-Bold.ttf)
+        }
+        @font-face {
+                font-family: raleway-light;
+                src: url(/fonts/Raleway-Light.ttf)
+        }
         body{
             padding-top:80px;
-            background:url("/images/loginbg.jpg");
+            background:url("/images/back_log_kishan.jpg");
             background-size:cover;
             height:100%;
             width:100%;
         }
         @font-face{
-
             font-family: "panton-bold";
             src: url("/fonts/Panton-BlackCaps.otf");
 
@@ -24,28 +32,34 @@
             text-align:center;
 
         }
+        p {
+            margin: 0px auto;
+            width: 240px;
+            font-family: raleway-bold;
+            text-align: center;
+            margin-bottom: 5px;
+            color:#000000;
+        }
         .zlogo{
-
-            display:block;
-            margin:0px auto;
-            width:260px;
-            margin-top:8%;
-            margin-bottom:20px;
-
+            display: block;
+            margin: 0px auto;
+            width: 240px;
+            margin-top: 15%;
+            margin-bottom: 30px;
         }
         .loginh1{
-
-            font-size:18px;
-            text-align:center;
-            font-family: "panton-bold";
-            margin-top:50px;
-            margin-bottom:30px;
+            font-family: raleway-bold;
+            margin: 0px auto;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 35px;
 
         }
         .loginh5{
 
             text-align:center;
             font-weight:bold;
+            color:#000000;
 
         }
         .loginerror, .loginerror2, .loginerror3, .otperror{
@@ -67,10 +81,20 @@
         }
         .nextbtn, .continuebtn{
 
-            color:black;
-            padding:5px 10px;
-            border-radius:3px;
-            font-size:14px;
+            font-family: raleway-bold;
+            margin: 0px auto;
+            display: block;
+            width: 87%;
+            height: 40px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: black;
+            vertical-align: middle;
+            background-color: #f3ac00;
+            background-image: none;
+            border: 1px solid #f3ac00;
+            border-radius: 4px;
             font-weight:bold;
 
         }
@@ -78,6 +102,23 @@
 
             display:none;
 
+        }
+        .form-control{
+           font-family: raleway-light;
+            margin: 0px auto;
+            display: block;
+            width: 87%;
+            height: 40px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: black;
+            vertical-align: middle;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight:bold;
         }
         .icon{
 
@@ -88,24 +129,25 @@
             font-size:18px;
         }
         .alert {
+            width: 300px;
+            margin: 0px auto;
             padding: 7px 14px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-
+<h1 class="loginh1">Login</h1>
 <div class="col-sm-4 col-sm-offset-4">
-    <img src="/images/zeonlab_logo.png" class="zlogo">
-    <h1 class="loginh1">Login</h1>
+    <img src="/images/raj_kishan_logo.png" class="zlogo">
     <!-- LOGIN FORM -->
     <div class="loginnext">
     <form action="/kisaanlogin" method="post" id="loginform">
         <div class="alert alert-danger loginerror">Please enter proper aadhar number</div>
         <div class="alert alert-danger loginerror3">Kisaan with this Aadhar number does not exist!</div>
         <h5 class="loginh5">Verify your Aadhar number</h5>
-        <div class="form-group">
-            <input type="text" id="aadhar" maxLength=12 class="form-control aadhar" name="aadhar" placeholder="Aadhar Number">
+        <div class="form-group ">
+            <input type="text" id="aadhar" maxLength=12 class="form-control aadhar form-control" name="aadhar" placeholder="Aadhar Number">
         </div>
         <p>We will text a verification code to the associated mobile number</p>
     </form>

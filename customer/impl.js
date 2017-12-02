@@ -42,6 +42,14 @@ module.exports = {
     }));
   },
 
+  farmerhistory: function(req, res) {
+    var claimdb = require('../claim/db');
+    claimdb.getListOfClaims(onClaimList.bind({
+      'res': res,
+      'req': req
+    }));
+  },
+
   validateOTP: function(req, res) {
     var otp = req.body.otp;
     var mobile = '91' + req.body.mobile;
@@ -68,6 +76,28 @@ module.exports = {
     }));
   }
 
+}
+
+function onClaimList(err, claim) {
+  console.log(claim);
+  req = this.req;
+  res = this.res;
+  var claimSenderList = new Array;
+  var claimDealerList = new Array;
+  var claimAmountList = new Array;
+  for (var i = 0; i < claimSenderList.length; ++i) {
+    claimSenderList[i] = claim[i].sender;
+    claimDealerList[i] = claim[i].dealer;
+    claimAmountList[i] = claim[i].amount;
+  }
+  console.log(claimDealerList);
+  console.log(claimSenderList);
+  res.render('farmerhistory.ejs', {
+    'user': user,
+    'claimSenderList': claimSenderList,
+    'claimDealerList': claimDealerList,
+    'claimAmountList': claimAmountList
+  });
 }
 
 function onFindKisaan(err, kisaan) {

@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-	<title><%= user.role %>/Trade Dashboard</title>
+	<title>Farmer History</title>
 	<link rel="stylesheet" href="/sheets/bootstrap.css">
 	<link rel="stylesheet" href="/sheets/font-awesome.css">
 
@@ -310,7 +310,7 @@
 	</div>
 	<ul class="nav navbar-nav navbar-right navhide">
 			<li><a href="/profiledetails">PROFILE DETAILS</a></li>
-			<li><a href="/farmerhistory">FARMER HISTORY</a></li>
+			<li><a href="/profile">USER DASHBOARD</a></li>
 	<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
 	</ul>
 </div>
@@ -328,15 +328,10 @@
 				<div id="LiveTrade">
 					<h3> Kisaan List </h3>
 					<table>
-						<thead id="kisaan_header">
+						<thead id="claim_header">
 						</thead>
-						<tbody id="kisaan_list"></tbody>
+						<tbody id="claim_list"></tbody>
 					</table>
-					<form id="myform" action="/recordFertIssue" method="post" enctype="application/x-www-form-urlencoded">
-						<input type="hidden" id="kisaanAadhar" name="kisaanAadhar"></input>
-						<input type="hidden" id="amount" name="amount"></input>
-						<input type="hidden" name="userAddress" value=<%= user.ethereumAddress %>></input>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -352,31 +347,26 @@
 <script>
 	var tbody = document.getElementById('kisaan_list');
 	var thead = document.getElementById('kisaan_header');
-	var kisaan="<%= kisaanList%>";
-	var kisaanList=kisaan.split(',');
-	var kisaanAadharList= "<%=kisaanAadharList%>".split(',');
-	console.log(kisaanList.length);
-	for (i = 0; i < kisaanList.length; ++i) {
-		var tr = "<tr>";
-		tr += '<td style="display:block;">' + kisaanList[i] + "</td><td>" + '<input type="checkbox" id="checkbox" onchange="enableTxtbx('+kisaanAadharList[i]+')">'+ "</td><td>"+'<input disabled="" id='+kisaanAadharList[i]+' type="number" placeholder="Enter Amount">'+"</td><td>"+'<button href='+kisaanAadharList[i]+' class="viewbtn" onclick="getTradeDetails(this)"><img src="/images/View.png" class="viewimg">Send RAJTokens</button><img src="/images/loader.gif" class="loaderbtngif"></td></tr>';
-		thead.innerHTML = '<tr><th>Kisaan Name</th><th>Select Farmer</th><th>Input Amount</th><th>Pay Kisaan</th></tr>';
-		tbody.innerHTML = tr + tbody.innerHTML;
-		// $('#checkbox').change(function(){
-	  //  $("#amountBox").prop("disabled", !$(this).is(':checked'));
-		// });
+	var claimSenderList= "<%=claimSenderList%>".split(',');
+	var claimDealerList= "<%=claimDealerList%>".split(',');
+	var claimAmountList= "<%=claimAmountList%>".split(',');
+	if(claimSenderList.length==0){
+		thead.innerHTML = '<tr><th>Farmer</th><th>Retailer</th><th>Claim Amount</th></tr>';
+		tbody.innerHTML = 'No Claims Yet';
 	}
-	function getTradeDetails(obj){
-		document.getElementById('kisaanAddress').value = obj.getAttribute("href");
-		document.getElementById('amount').value = 45;
-		document.getElementById('myform').submit();
+	else{
+		for (i = 0; i < claimSenderList.length; ++i) {
+			var tr = "<tr>";
+			tr += '<td style="display:block;">' + claimSenderList[i] + "</td><td>" +claimDealerList[i]+"</td><td>"+claimAmountList[i]+'</tr>';
+			thead.innerHTML = '<tr><th>Farmer</th><th>Retailer</th><th>Claim Amount</th></tr>';
+			tbody.innerHTML = tr + tbody.innerHTML;
+			// $('#checkbox').change(function(){
+		  //  $("#amountBox").prop("disabled", !$(this).is(':checked'));
+			// });
+		}
 	}
 	$(document).ready(function(){
 		$('[data-toggle="popover"]').popover();
 	});
-	function enableTxtbx(kal){
-
-			$('#'+kal).prop("disabled", false);
-
-	}
 </script>
 </html>

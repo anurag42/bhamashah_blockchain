@@ -214,7 +214,7 @@ function onKYCUpload(err, hash) {
   res = this.res;
   console.log(hash);
   //Create New Ethereum Account for User and store in DB
-  userdb.createNewUser(web3.personal.newAccount(req.body.password), hash[0].hash, req, res, onCreateNewUserCallback.bind({
+  userdb.createNewUser(web3.personal.newAccount(req.body.password), hash[0].hash, req, onCreateNewUserCallback.bind({
     'req': req,
     'res': res,
     'hash': hash
@@ -250,11 +250,11 @@ function checkIfRegistryDeployed(registryAddress) {
   });
 }
 
-function redirectOnUpload(err, user) {
+function redirectOnUpload() {
   console.log("Redirecting");
   var req = this.req;
   var res = this.res;
   var user = this.user;
   req.session.userId = user._id;
-  return res.redirect('/profile');
+  res.redirect('/profile');
 }
