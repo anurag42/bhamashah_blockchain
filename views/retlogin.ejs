@@ -1,0 +1,151 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Retailer Login</title>
+    <link rel="stylesheet" href="/sheets/bootstrap.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="/sheets/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+         @font-face {
+                font-family: raleway-light;
+                src: url(/fonts/Raleway-Light.ttf)
+        }
+        @font-face {
+                font-family: raleway-bold;
+                src: url(/fonts/Raleway-Bold.ttf)
+        }
+
+        body{
+            font-family: raleway-light;
+            padding-top:80px;
+            background:url("/images/back_log_kishan.jpg");
+            background-size:100%;
+            height:100%;
+            width:100%;
+        }
+        @font-face{
+
+            font-family: "panton-bold";
+            src: url("/fonts/Panton-BlackCaps.otf");
+
+        }
+        p {
+            font-family: raleway-bold;
+            font-weight: bold;
+            line-height: 5px;
+            margin: 0 0 10px;
+            color: #000000;
+            padding-left:23px;
+        }
+        a {
+            color: #000000;
+            text-decoration: none;
+            text-decoration: underline;
+         }
+
+        .zlogo{
+             text-align: left;
+            display: block;
+            margin: 0px auto;
+            width: 150px;
+            margin-bottom: 20px;
+            float: left;
+            margin-top:-50px;
+            margin-left:20px;
+        }
+        .loginh1{
+            left:50%;
+            margin-left:-30px;
+            font-size:18px;
+            text-align:center;
+            font-family: "raleway-bold";
+            margin-top:130px;
+            margin-bottom:30px;
+
+        }
+        .loginbtn {
+            margin-right: 25px;
+            margin-top: -2px;
+            margin-left: -10px;
+            font-family: raleway-bold;
+            float: right;
+            color: #282828;
+            padding: 8px 30px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #f3ac00;
+            border-color: #f3ac00;
+        }
+
+        .icon{
+
+            color: gray;
+            float: right;
+            margin-top: -25px;
+            margin-right: 13px;
+            font-size:18px;
+        }
+        .form-control{
+           font-family: raleway-light;
+            margin: 0px auto;
+            display: block;
+            width: 87%;
+            height: 40px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: black;
+            vertical-align: middle;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight:bold;
+        }
+        .alert {
+           text-align: center;
+            width: 300px;
+            padding: 7px 14px;
+            margin: 0px auto;
+        }
+        .zeon_logo {
+            width: 150px;
+            float: right;
+            margin-top: -30px;
+            margin-right: 20px;
+        }
+        .col-sm-offset-4 {
+                margin-left: 28.33333333333333%;
+        }
+    </style>
+</head>
+<body>
+<div class=""><img src="/images/zeonlab_logo.png" class="zeon_logo"></div>
+<div><img src="/images/raj_kishan_logo.png" class="zlogo"></div>
+<div class="container">
+
+<div class="col-sm-4 col-sm-offset-4">
+      <h1 class="loginh1">Retailer Login</h1>
+    <% if (message) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+    <form action="/login" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg loginbtn">Login</button>
+    </form>
+    <p>Need an account?</p>
+    <p><a href="/signup">Signup</a> Or <a href="/">Home</a>.</p>
+
+</div>
+</div>
+</body>
+</html>
