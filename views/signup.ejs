@@ -3,35 +3,43 @@
 <html>
 <head>
     <title>Signup</title>
-    <link rel="stylesheet" href="/sheets/bootstrap.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="/sheets/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="../styles/sheets/bootstrap.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="../styles/sheets/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
+
+         @font-face {
+                font-family: raleway-bold;
+                src: url(../styles/fonts/Raleway-Bold.ttf)
+        }
+        @font-face {
+                font-family: raleway-light;
+                src: url(../styles/fonts/Raleway-Light.ttf)
+        }
+
         body{
-            padding-top:80px;
-            background:url("/images/loginbg.jpg");
-            background-size:cover;
+            background:url("../styles/images/back_log_kishan.jpg");
+            background-size:100%;
             height:100%;
             width:100%;
         }
         @font-face{
 
             font-family: "panton-bold";
-            src: url("/fonts/Panton-BlackCaps.otf");
+            src: url("../styles/fonts/Panton-BlackCaps.otf");
 
         }
         .zlogo{
 
             display:block;
             margin:0px auto;
-            width:260px;
+            width:240px;
             margin-bottom:20px;
 
         }
         .loginh1{
-
+            font-family: raleway-bold;
             font-size:18px;
             text-align:center;
-            font-family: "panton-bold";
             margin-top:50px;
             margin-bottom:30px;
 
@@ -48,13 +56,18 @@
             font-size:18px;
         }
         .loginbtn{
-
-            float:right;
-            color:black;
-            padding:5px 10px;
-            border-radius:3px;
-            font-size:14px;
-            font-weight:bold;
+            position: relative;
+            right: 25px;
+            top: -30px;
+            font-family: raleway-bold;
+            float: right;
+            color: #282828;
+            padding: 8px 30px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #f3ac00;
+            border-color: #f3ac00;
 
         }
         input[type=file]::-webkit-file-upload-button {
@@ -95,11 +108,12 @@
             border-radius:5px;
 
         }
+
         .rdbx{
 
             display:inline-block;
-            margin-left:7px;
             margin-right:7px;
+            margin-left: 25px;
 
         }
         label>.rimg{
@@ -110,17 +124,18 @@
             background-repeat:no-repeat;
             display:inline-block;
             background:transparent;
-            border:1px solid #ccc;
+            border:1px solid #000000;
             border-radius:3px;
         }
         .rcont{
             margin:0;
             text-align:center;
-            font-size:10px;
+            font-size:12px;
             line-height:12px;
             margin-top: -25px;
             margin-bottom:20px;
             cursor:pointer;
+            font-family: raleway-bold;
         }
         .rdbx .fa{
 
@@ -135,37 +150,72 @@
             padding: 0;
             background: none;
         }
+        .form-control{
+           font-family: raleway-light;
+            margin: 0px auto;
+            display: block;
+            width: 87%;
+            height: 35px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: black;
+            vertical-align: middle;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight:bold;
+        }
+        .test_uplab{
+           padding-left:25px;
+        }
+        p {
+            font-family: raleway-light;
+            font-weight:bold;
+            line-height: 8px;
+            margin: 0 0 10px;
+            margin-left: 25px;
+            color:#000000;
+        }
+        a {
+           color:#000000;
+           text-decoration: underline;
+        }
+        .form-group{
+           margin-bottom:8px;
+        }
 
     </style>
 </head>
 <body>
     <div class="container">
+         <h1 class="loginh1">Sign up</h1>
         <div class="col-sm-4 col-sm-offset-4">
-            <img src="/images/zeonlab_logo.png" class="zlogo">
-            <h1 class="loginh1">Signup</h1>
-            <% if (message) { %>
-            <div class="alert alert-danger"><%= message %></div>
-            <% } %>
+            <img src="../styles/images/raj_kishan_logo.png" class="zlogo">
+            <!--<% if (message) { %>-->
+            <!--<div class="alert alert-danger"><%= message %></div>-->
+            <!--<% } %>-->
             <!-- SIGNUP FORM -->
             <form action="/signup" method="post" enctype = "multipart/form-data" >
                 <div class="form-group">
                     <input type="text" class="form-control" name="username" placeholder="Username" required>
-                    <span class="fa fa-user icon"></span>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" name="email" placeholder="Email ID" required>
-                    <span class="fa fa-user icon"></span>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" name="password" placeholder="Password" required>
-                    <span class="fa fa-lock icon"></span>
                 </div>
-                <label>Upload KYC Doc:</label>
+                <div class="form-group">
+                    <input type="adharno" class="form-control" name="password" placeholder="Enter your Aadhar no." required>
+                </div>
+                <label class="test_uplab">Upload KYC Doc:</label>
                 <div class="form-group">
                     <input type="file" class="form-control" name="file" required>
                 </div>
                 <div class="form-group">
-                    <label>Role (Select any one):</label><br>
+                    <label class="test_uplab">Role (Select any one):</label><br>
                     <div class="rdbx">
                         <input type="radio" name="role" value="Retailer" id="Retailer" />
                         <label for="Retailer"><span class="fa fa-user rimg"></span></label>
@@ -173,17 +223,13 @@
                     </div>
                     <div class="rdbx">
                         <input type="radio" name="role" value="Admin" id="Admin" />
-                        <label for="Admin"><span class="fa fa-handshake-o rimg"></span></label>
+                        <label  for="Admin"><span class="fa fa-handshake-o rimg"></span></label>
                         <p class="rcont">Admin</p>
                     </div>
                 <button type="submit" class="btn btn-warning btn-lg loginbtn">Signup</button>
             </form>
-
-            <hr style="margin-top: 60px;">
-
-            <p>Already have an account? <a href="/login">Login</a></p>
-            <p>Or go <a href="/">home</a>.</p>
-
+            <p>Already have an account?</p>
+            <p><a href="/login">Login</a> Or <a href="/">Home</a>.</p>
         </div>
 
     </div>
