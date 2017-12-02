@@ -181,12 +181,12 @@ function onFindUserProfileDetails(err, user) {
   var res = this.res;
   if (user.role == 'Retailer') {
     res.render('retailerprofile.ejs', {
-      ethBalance: registryInstance.balanceOf.call("656979695441"),
+      ethBalance: registryInstance.balanceOf.call(user.aadhar),
       user: user
     });
   } else {
     res.render('profiledetails.ejs', {
-      ethBalance: registryInstance.balanceOf.call("656979695441"),
+      ethBalance: registryInstance.balanceOf.call(user.aadhar),
       user: user
     });
   }
@@ -226,7 +226,7 @@ function onCreateNewUserCallback(err, user) {
   res = this.res;
   hash = this.hash;
   console.log("Creare", user);
-  registryFunctions.submitKYC(req, res, user, tokenAddress, "656979695441", user.ethereumAddress, hash[0].hash);
+  registryFunctions.submitKYC(req, res, user, tokenAddress, req.body.aadhaarNo, user.ethereumAddress, hash[0].hash);
 }
 
 function checkIfRegistryDeployed(registryAddress) {
