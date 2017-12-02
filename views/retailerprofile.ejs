@@ -180,6 +180,9 @@
 			<h1 class="head1"> PROFILE DETAILS</h1>
 		</div>
 
+		<span id="status" style="text-align: center"></span>
+
+
     <div class="col-sm-8">
       <div class="well">
 
@@ -188,20 +191,13 @@
         <p class="pitxt"><img src="/images/Address.png" class="rnd"><strong>Blockchain Address: </strong><span class="pitxt"><%= user.ethereumAddress %></span></p><hr>
 
         <p class="pitxt" style="display:inline-block;"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RAJCOIN</p>
-				<input type="text" class="form-control" style="width:100px;display:inline-block;margin:0px 20px;"><button class="btn btn-default">Redeem</button><hr>
+        <form enctype = "multipart/form-data" >
+                <input type="hidden" class="form-control" id="address" name="address" value="<%= user.ethereumAddress%>">
+				<input type="text" class="form-control" id="amount" style="width:100px;display:inline-block;margin:0px 20px;">
+				</form>
+			<button type="submit" class="btn btn-default" onclick="redeemZen()">Redeem</button><hr>
         <p class="pitxt"><img src="/images/KYC.png" class="rnd"><strong>SHA 256 Hash of KYC Docs </strong></p>
 				<table><tbody id="KYChash"></tbody></table><br>
-        <!--<span class="pitxt"><%= user.kychash %></span><br>-->
-				<!--<form id='submit' action="/filedownload" method="post" enctype = "application/x-www-form-urlencoded">
-					<input id="hashNumber" type="hidden" name="number"></input>
-					<button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button>
-				</form>
-
-          <form id='submit' action="/getKYChash" method="post" enctype = "application/x-www-form-urlencoded">
-            <input type="hidden" name="usrHash" value=<%= user.ethereumAddress %>></input>
-            <input id="hashNumber" type="hidden" name="number"></input>
-            <button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Blockchain</button>
-          </form><br><br>-->
     </div>
     </div>
 		<div class="col-sm-4">
@@ -254,9 +250,31 @@
 		var ethAddress = '<%= user.ethereumAddress %>';
 		for (i = 0; i < hashList.length; ++i) {
 			hashbody.innerHTML += '<tr><td><span class="pitxt">' + '&emsp;&emsp;&emsp;&emsp;Doc'+(i+1)+': '+CryptoJS.SHA256(hashList[i]).toString(CryptoJS.enc.Base64) + '</span></td><td><form action="/filedownload" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="kychash" value='+ hashList[i] + '></input><button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button></form></td><td><form action="/getKYChash" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="usrHash" value='+ ethAddress + '></input><input type="hidden" name="indx" value=' + (i+1) + '></input><button type="submit" data-toggle="modal" data-target="#bcdnldmodal" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Blockchain</button></form></td></tr>';
-
-
-			//hashbody.innerHTML +='<button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button>';
-			//hashbody.innerHTML +='<button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Blockchain</button>'
 		}
+
+		function redeemZen() {
+		console.log("RedeemFn");
+  var xhttp = new XMLHttpRequest();
+  document.getElementById("status").innerHTML = "Transaction sent....Awaiting Response";
+  var address = encodeURIComponent(document.getElementById("address").value);
+  var amount = encodeURIComponent(document.getElementById("amount").value);
+  var parameters = "address=" + address + "&amount=" + amount;
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(xhttp.responseText == -1){
+
+      }
+      else{
+        var res = JSON.parse(xhttp.responseText);
+        document.getElementById("status").innerHTML = "Transaction successful";
+        console.log("Status", res.status);
+      }
+    }
+  }
+
+    xhttp.open("POST", "/redeem", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(parameters);
+}
 </script>

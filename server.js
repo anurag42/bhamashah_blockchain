@@ -8,7 +8,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 var app = express();
-var port = process.env.PORT || 8090;
+var port = process.env.PORT || 80;
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
@@ -31,7 +31,7 @@ app.use(session({
   store: new MongoStore({
     host: '127.0.0.1',
     port: 27017,
-    url: 'mongodb://127.0.0.1/db_name',
+    url: 'mongodb://127.0.0.1/fertilizertoken',
     collection: 'session'
   }),
   name: 'sess'
@@ -63,6 +63,7 @@ require('./user/routes')(app);
 require('./file/routes')(app);
 require('./exchange/routes')(app);
 require('./claim/routes')(app);
+require('./redeem/routes')(app);
 require('./customer/routes')(app);
 console.log("Server started");
 // launch ======================================================================
