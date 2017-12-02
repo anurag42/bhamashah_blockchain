@@ -94,13 +94,13 @@ function onClaimList(err, claim) {
   var claimSenderList = new Array;
   var claimDealerList = new Array;
   var claimAmountList = new Array;
-  for (var i = 0; i < claimSenderList.length; ++i) {
+  for (var i = 0; i < claim.length; ++i) {
     claimSenderList[i] = claim[i].sender;
     claimDealerList[i] = claim[i].dealer;
     claimAmountList[i] = claim[i].amount;
   }
-  console.log(claimDealerList);
-  console.log(claimSenderList);
+  console.log("Dealer list", claimDealerList);
+  console.log("Sender", claimSenderList);
   res.render('farmerhistory.ejs', {
     'user': user,
     'claimSenderList': claimSenderList,
@@ -116,13 +116,14 @@ function onKisaanClaimList(err, claim) {
   var claimSenderList = new Array;
   var claimDealerList = new Array;
   var claimAmountList = new Array;
-  for (var i = 0; i < claimSenderList.length; ++i) {
+  console.log("Claim");
+  for (var i = 0; i < claim.length; ++i) {
     claimSenderList[i] = claim[i].sender;
     claimDealerList[i] = claim[i].dealer;
     claimAmountList[i] = claim[i].amount;
   }
-  console.log(claimDealerList);
-  console.log(claimSenderList);
+  console.log("Dealer list", claimDealerList);
+  console.log("Sender", claimSenderList);
   res.render('withdrawalhistory.ejs', {
     'claimSenderList': claimSenderList,
     'claimDealerList': claimDealerList,

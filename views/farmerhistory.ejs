@@ -366,8 +366,8 @@
 <script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 <script>
-	var tbody = document.getElementById('kisaan_list');
-	var thead = document.getElementById('kisaan_header');
+	var tbody = document.getElementById('claim_list');
+	var thead = document.getElementById('claim_header');
 	var claimSenderList= "<%=claimSenderList%>".split(',');
 	var claimDealerList= "<%=claimDealerList%>".split(',');
 	var claimAmountList= "<%=claimAmountList%>".split(',');
@@ -377,13 +377,11 @@
 	}
 	else{
 		for (i = 0; i < claimSenderList.length; ++i) {
+		console.log(claimSenderList);
 			var tr = "<tr>";
 			tr += '<td style="display:block;">' + claimSenderList[i] + "</td><td>" +claimDealerList[i]+"</td><td>"+claimAmountList[i]+'</tr>';
 			thead.innerHTML = '<tr><th>Farmer</th><th>Retailer</th><th>Claim Amount</th></tr>';
 			tbody.innerHTML = tr + tbody.innerHTML;
-			// $('#checkbox').change(function(){
-		  //  $("#amountBox").prop("disabled", !$(this).is(':checked'));
-			// });
 		}
 	}
 	$(document).ready(function(){
