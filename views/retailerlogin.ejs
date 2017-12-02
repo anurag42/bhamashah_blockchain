@@ -79,12 +79,6 @@
             src: url("/fonts/Raleway-Light.ttf");
 
         }
-				@font-face{
-
-			             font-family: "ralewaybold";
-			             src: url("/fonts/Raleway-Bold.ttf");
-
-			         }
 
 		body{
 			font-family: raleway-light;
@@ -140,7 +134,7 @@
 		}
 		.head1{
 
-			font-family: "ralewaybold";
+			font-family: "panton-bold";
 			font-size:20px;
 
 		}
@@ -321,8 +315,6 @@
         }
         .navbar-default .navbar-nav>li>a{
            margin-top:15px;
-					 font-family: "ralewaybold";
-					 font-size: 14px;
         }
 
 
@@ -338,9 +330,9 @@
 	<a class="navbar-brand" href="#"></a>
 	</div>
 	<ul class="nav navbar-nav navbar-right navhide">
-			<li><a href="/profiledetails">Profile Details</a></li>
-			<li><a href="/profile">Retails Dashboard</a></li>
-	<li><a href="/logout" class="footerscrl rdot">Logout</a></li>
+			<li><a href="/profiledetails">PROFILE DETAILS</a></li>
+			<li><a href="/profile">RETAILER DASHBOARD</a></li>
+	<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
 	</ul>
 </div>
 </nav>
@@ -380,8 +372,8 @@
 	var transactionAmountArray="<%= transactionAmountArray%>".split(',');
 	for (i = 0; i < transactionToArray.length; ++i) {
 		var tr = "<tr>";
-		tr += '<td style="display:block;">' + transactionToArray[i] + "</td><td>"+ transactionAmountArray[i] +'</td><td><button class="btn btn-default">View</button></td></tr>';
-		thead.innerHTML = '<tr><th>Kisaan</th><th>Transaction Amount</th><th>View Invoice</th></tr>';
+		tr += '<td style="display:block;">' + transactionToArray[i] + "</td><td>"+ transactionAmountArray[i] +'</tr>';
+		thead.innerHTML = '<tr><th>Transaction To</th><th>Transaction Amount</th></tr>';
 		tbody.innerHTML = tr + tbody.innerHTML;
 	}
 	$(document).ready(function(){
