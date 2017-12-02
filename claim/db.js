@@ -23,6 +23,12 @@ module.exports = {
     claimTxn.find({}, callback);
   },
 
+  getClaimsByFarmerName: function(kisaan_name, callback) {
+    claimTxn.find({
+      'sender': kisaan_name
+    }, callback);
+  },
+
   updateExchangeEntry: function(query, update) {
     var options = {
       multi: true
