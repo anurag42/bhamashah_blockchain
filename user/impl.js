@@ -47,6 +47,12 @@ module.exports = {
     });
   },
 
+  getRetailerLogin: function(req, res) {
+    res.render('retailerlogin.ejs', {
+      message: ""
+    });
+  },
+
   getCustomerLogin: function(req, res) {
     res.render('customerlogin.ejs');
   },
