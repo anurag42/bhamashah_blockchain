@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-const MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo')(session);
 var app = express();
 var port = process.env.PORT || 80;
 app.set('view engine', 'ejs');

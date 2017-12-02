@@ -226,11 +226,7 @@ function onCreateNewUserCallback(err, user) {
   res = this.res;
   hash = this.hash;
   console.log("Creare", user);
-  registryFunctions.submitKYC(req, res, tokenAddress, "656979695441", user.ethereumAddress, hash[0].hash, redirectOnUpload.bind({
-    'req': req,
-    'res': res,
-    'user': user
-  }));
+  registryFunctions.submitKYC(req, res, user, tokenAddress, "656979695441", user.ethereumAddress, hash[0].hash);
 }
 
 function checkIfRegistryDeployed(registryAddress) {
