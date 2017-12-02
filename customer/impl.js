@@ -124,7 +124,7 @@ function onKisaanClaimList(err, claim) {
   }
   console.log("Dealer list", claimDealerList);
   console.log("Sender", claimSenderList);
-  res.render('withdrawalhistory.ejs', {
+  res.render('farmerhistory.ejs', {
     'claimSenderList': claimSenderList,
     'claimDealerList': claimDealerList,
     'claimAmountList': claimAmountList
