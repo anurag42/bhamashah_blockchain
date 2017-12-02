@@ -17,6 +17,11 @@ module.exports = {
       '_id': req.session.userId
     }, callback);
   },
+  findUserByAddress: function(req, res, callback) {
+    User.findOne({
+      'ethereumAddress': req.body.address
+    }, callback);
+  },
   createNewUser: function(account, hash, req, callback) {
     var newUser = new User();
     console.log("Aadhaar", req.body.aadhaarNo);
@@ -27,6 +32,7 @@ module.exports = {
     newUser.role = req.body.role;
     newUser.kychash = hash;
     newUser.ethereumAddress = account;
+    newUser.inrBalance = 0;
     newUser.aadhar = req.body.aadhaarNo;
     newUser.save(callback);
   },

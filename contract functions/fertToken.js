@@ -44,7 +44,7 @@ module.exports = {
     }));
   },
 
-  recordRedemption: function(sender, redeemAmount) {
+  recordRedemption: function(sender, redeemAmount, callback) {
     console.log("Recording redemption by dealer on Blockchain", sender, redeemAmount);
     var fertTokenInstance = fertTokenContract.at(config.tokenAddress);
     console.log('1');
@@ -57,7 +57,8 @@ module.exports = {
     //console.log(gasUsage);
     fertTokenInstance.redeem.sendTransaction(sender, redeemAmount, params, recordRedemptionCallback.bind({
       'fertTokenInstance': fertTokenInstance,
-      'sender': sender
+      'sender': sender,
+      'callback': callback
     }));
   },
 
@@ -137,10 +138,10 @@ function recordRedemptionCallback(error, result) {
     response.send(error);
     return;
   }
-  watchRedemption(this.fertTokenInstance, this.sender);
+  watchRedemption(this.fertTokenInstance, this.sender, this.callback);
 }
 
-function watchRedemption(fertTokenInstance, sender) {
+function watchRedemption(fertTokenInstance, sender, callback) {
   console.log("Watching fertilizer token redemption event", sender);
   fertTokenInstance.LogRedeemed({
     'sender': sender
@@ -150,6 +151,7 @@ function watchRedemption(fertTokenInstance, sender) {
       return;
     }
     console.log('Redemption Successful');
+    callback();
   });
 }
 
