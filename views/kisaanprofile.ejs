@@ -4,23 +4,30 @@
 <html>
 <head>
 	<title>Kisaan Profile</title>
-	<link rel="stylesheet" href="/sheets/bootstrap.css">
-	<link rel="stylesheet" href="/sheets/font-awesome.css">
-	<link rel="stylesheet" href="/sheets/tradepage.css">
+	<link rel="stylesheet" href="../styles/sheets/bootstrap.css">
+	<link rel="stylesheet" href="../styles/sheets/font-awesome.css">
+	<link rel="stylesheet" href="../styles/sheets/tradepage.css">
 	<style>
+	      @font-face {
+                font-family: raleway-light;
+                src: url(../styles/fonts/Raleway-Light.ttf)
+        }
+        @font-face {
+                 font-family: "panton-bold";
+                src: url(../styles/fonts/Raleway-Bold.ttf)
+        }
+        .navbar-right{
+             font-family: "panton-bold";
+        }
+
 		body{
 			font-family: raleway-light;
-            background:url("/images/back_log_kishan.jpg");
+            background:url("../styles/images/back_log_kishan.jpg");
             background-size:100%;
             height:100%;
             width:100%;
 		}
-		@font-face{
 
-            font-family: "panton-bold";
-            src: url("/fonts/Panton-BlackCaps.otf");
-
-        }
         .page-header{
 
         	border-bottom:0px;
@@ -169,33 +176,57 @@
             margin-right: 20px;
             margin-top:20px;
         }
+        .test_btn{
+           font-size: 13px;
+			font-weight: bold;
 
+        }
+        .navbar-default .navbar-nav>li>a{
+           margin-top:15px;
+               font-size: 14px;
+        }
+        .btn-warning{
+                background-color: #f3ac00;
+               border-color: #f3ac00;
+        }
+        .set_btn{
+              float: right;
+				height: 35px;
+				margin-top: -35px;
+				font-size: 10px;
+				padding: 5px;
+				background: #808080;
+				border: none;
+				border-radius: 0px 4px 4px 0px;
+				border-color: #787878;
+				color: white;
+        }
 	</style>
 </head>
 <body window.onload="onload()">
-   <div class=""><img src="/images/zeonlab_logo.png" class="zeon_logo"></div>
-  <div><img src="/images/raj_kishan_logo.png" class="zlogo"></div>
+   <div class=""><img src="../styles/images/zeonlab_logo.png" class="zeon_logo"></div>
+  <div><img src="../styles/images/raj_kishan_logo.png" class="zlogo"></div>
 	<nav class="navbar navbar-default">
 <div class="container-fluid">
 	<div class="navbar-header">
 	<a class="navbar-brand" href="#"></a>
 	</div>
 	<ul class="nav navbar-nav navbar-right navhide">
-		<li><a href="/profiledetails">PROFILE DETAILS</a></li>
-		<li><a href="/withdrawalhistory?key=<%= kisaan.name %>">WITHDRAWAL HISTORY</a></li>
-<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
+		<li><a href="/profiledetails">Profile Details</a></li>
+		<li><a href="/withdrawalhistory?key=<%= kisaan.name %>">Withdrawal History</a></li>
+<li><a href="/logout" class="footerscrl rdot">Logout</a></li>
 	</ul>
 </div>
 </nav>
 	<div class="container">
 		<div class="page-header text-center">
-			<h1 class="head1">KISAAN PROFILE</h1>
+			<h1 class="head1">Kisaan Profile</h1>
 		</div>
 
 		<span id="status" style="text-align: center"></span>
 
-   <div class="col-sm-2"></div>
-    <div class="col-sm-8">
+   <div class="col-sm-4"></div>
+    <div class="col-sm-4">
       <div class="well">
         <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong> <%= kisaan.name %></p><hr>
 				<p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Aadhar Number: </strong> <%= kisaan.aadhar %></p><hr>
@@ -204,15 +235,15 @@
 					<div class="form-group">
 					        <input type="hidden" class="form-control" id="kisaan" name="kisaan" value="<%= kisaan.aadhar%>">
 							<input type="text" class="form-control" id="dealeraddress" name="dealeraddress" placeholder="Dealer Address" required>
-							<span class="fa fa-user icon"></span>
+							<button type="submit" class="btn btn-warning btn-lg loginbtn test_btn set_btn">Pay using QR Code</button>
 					</div>
 					<div class="form-group">
 							<input type="number" class="form-control" id="amount" name="amount" placeholder="Coins to Pay" required>
 							<span class="fa fa-user icon"></span>
 					</div>
 			</form>
-			<button type="submit" class="btn btn-warning btn-lg loginbtn" onclick="transferZen()">Pay using RajasthanCoin</button> OR
-			<button type="submit" class="btn btn-warning btn-lg loginbtn">Pay using QR Code</button>
+			<button type="submit" class="btn btn-warning btn-lg loginbtn test_btn" onclick="transferZen()">Pay using RajasthanCoin</button>
+
     </div>
     </div>
 	</div>
@@ -220,9 +251,9 @@
 
 
 </body>
-<script type="text/javascript" src="/js/jquery.1.11.1.js"></script>
-<script type="text/javascript" src="/js/bootstrap.js"></script>
-<script type="text/javascript" src="/js/sha256.js"></script>
+<script type="text/javascript" src="../styles/js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="../styles/js/bootstrap.js"></script>
+<script type="text/javascript" src="../styles/js/sha256.js"></script>
 <script>
   function transferZen() {
   var xhttp = new XMLHttpRequest();
