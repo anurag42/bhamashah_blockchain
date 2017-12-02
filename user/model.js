@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
   kychash: String,
   role: String,
   ethereumAddress: String,
+  aadhar: String,
   transact_history: [{
     to: String,
     amount: Number

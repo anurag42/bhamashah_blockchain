@@ -26,6 +26,7 @@ module.exports = {
     newUser.role = req.body.role;
     newUser.kychash = hash;
     newUser.ethereumAddress = account;
+    newUser.aadhaar = req.body.aadhaarNo;
     newUser.save(callback);
   },
   updateUser: function(query, update) {
