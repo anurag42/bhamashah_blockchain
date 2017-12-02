@@ -378,7 +378,7 @@
 	}
 	function getTradeDetails(obj){
 		document.getElementById('kisaanAddress').value = obj.getAttribute("href");
-		document.getElementById('amount').value = 45;
+		document.getElementById('amount').value = document.getElementById(obj.getAttribute("href")).value;
 		document.getElementById('myform').submit();
 	}
 	$(document).ready(function(){

@@ -13,9 +13,9 @@ module.exports = {
   recordIssuance: function(sender, recepients, tokenAmounts, callback) {
     console.log("Recording Issuance of fertilizer", sender, recepients, tokenAmounts);
     var fertTokenInstance = fertTokenContract.at(config.tokenAddress);
-    var gasUsage = (fertTokenInstance.recordFertIssue.estimateGas(sender, recepients, tokenAmounts) < config.gasUsage) ? fertTokenInstance.recordFertIssue.estimateGas(sender, recepients, tokenAmounts) : config.gasUsage;
+    //gasUsage = (fertTokenInstance.recordFertIssue.estimateGas(sender, recepients, tokenAmounts) < config.gasUsage) ? fertTokenInstance.recordFertIssue.estimateGas(sender, recepients, tokenAmounts) : config.gasUsage;
     var params = {
-      gas: gasUsage,
+      gas: 1000000,
       gasPrice: config.gasPrice,
       from: config.ethAddress
     };
@@ -44,15 +44,17 @@ module.exports = {
     }));
   },
 
-  recordRedemption: function(sender, redeemAmount) {
+  recordRedemption: function(sender, redeemAmount, callback) {
     console.log("Recording redemption by dealer on Blockchain", sender, redeemAmount);
     var fertTokenInstance = fertTokenContract.at(config.tokenAddress);
-    var gasUsage = (fertTokenInstance.redeem.estimateGas(sender, redeemAmount) < config.gasUsage) ? fertTokenInstance.redeem.estimateGas(sender, redeemAmount) : config.gasUsage;
+    console.log('1');
+    //gasUsage = (fertTokenInstance.redeem.estimateGas(sender, redeemAmount) < config.gasUsage) ? fertTokenInstance.redeem.estimateGas(sender, redeemAmount) : config.gasUsage;
     var params = {
-      gas: gasUsage,
+      gas: 100000,
       gasPrice: config.gasPrice,
       from: config.ethAddress
     };
+    //console.log(gasUsage);
     fertTokenInstance.redeem.sendTransaction(sender, redeemAmount, params, recordRedemptionCallback.bind({
       'fertTokenInstance': fertTokenInstance,
       'sender': sender,
@@ -63,8 +65,8 @@ module.exports = {
   sendTransferTxn: function(req, res, exchangeEntryID, callback) {
     console.log('sendTransferTxn');
     var fertTokenInstance = fertTokenContract.at(config.tokenAddress);
-    //var _to = req.body.address;
-    var _to = "0x7b542cff04e19cb3391e0cc7791f75da87c2f6c1";
+    var _to = req.body.address;
+    //var _to = "0x7b542cff04e19cb3391e0cc7791f75da87c2f6c1";
     /* --------FIX NEEDED------
        Remove hardcoded value */
     var tokenAmount = req.body.amount * 1;
@@ -130,7 +132,7 @@ function watchClaim(fertTokenInstance, claimID, callback) {
   });
 }
 
-function recordRedemptionCallback() {
+function recordRedemptionCallback(error, result) {
   if (error) {
     console.error(error);
     response.send(error);
@@ -140,7 +142,7 @@ function recordRedemptionCallback() {
 }
 
 function watchRedemption(fertTokenInstance, sender, callback) {
-  console.log("Watching fertilizer token redemption event");
+  console.log("Watching fertilizer token redemption event", sender);
   fertTokenInstance.LogRedeemed({
     'sender': sender
   }).watch(function(e, log) {

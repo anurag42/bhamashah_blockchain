@@ -12,7 +12,7 @@ module.exports = {
   submitKYC: function(req, res, userID, registryAddress, aadhaarID, userEthAddress, KYCHash) {
     var registryInstance = registryContract.at(registryAddress);
     var hashArr = str2bytearr(KYCHash);
-    console.log(userEthAddress, hashArr);
+    console.log(aadhaarID, userEthAddress, hashArr);
     gasUsage = (registryInstance.submitKYC.estimateGas(aadhaarID, userEthAddress, hashArr) < config.gasUsage) ? registryInstance.submitKYC.estimateGas(aadhaarID, userEthAddress, hashArr) : config.gasUsage;
     var params = {
       gas: gasUsage,
