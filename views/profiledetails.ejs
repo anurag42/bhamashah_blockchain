@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/sheets/tradepage.css">
 	<style>
 		body{
-			font-family: raleway-light;
+			font-family: "raleway";
             background:url("/images/back_log_kishan.jpg");
             background-size:100%;
             height:100%;
@@ -21,9 +21,23 @@
             src: url("/fonts/Panton-BlackCaps.otf");
 
         }
+        @font-face{
+         font-family: "raleway";
+         src: url("/fonts/Raleway-Light.ttf");
+        }
+		@font-face{
+
+				font-family: "ralewaybold";
+				src: url("/fonts/Raleway-Bold.ttf");
+		}
         .page-header{
 
         	border-bottom:0px;
+
+        }
+        .test_coin{
+           font-size:14px;
+           font-family: "ralewaybold";
 
         }
 		.zlogo{
@@ -37,9 +51,10 @@
             margin-left:20px;
         }
         .head1{
-
-			font-family: "panton-bold";
-			font-size:20px;
+			position: relative;
+			left: -50px;
+			font-family: "ralewaybold";
+			font-size: 20px;
 			margin-left: -25px;
 
         }
@@ -94,7 +109,7 @@
         }
 
         .well{
-
+            box-shadow: 0px 0px 20px #b0b0b0;
         	background:white;
 
         }
@@ -169,6 +184,15 @@
             margin-right: 20px;
             margin-top:20px;
         }
+        .navbar-default .navbar-nav>li>a{
+           margin-top:15px;
+					 font-family: "ralewaybold";
+					 font-size: 14px;
+        }
+         strong {
+    font-weight: bold;
+    font-size: 14px;
+}
 
 	</style>
 </head>
@@ -180,9 +204,9 @@
 	<a class="navbar-brand" href="#"></a>
 	</div>
 	<ul class="nav navbar-nav navbar-right navhide">
-		<li><a href="/profiledetails">PROFILE DETAILS</a></li>
-		<li><a href="/profile">BACK TO ADMIN DASHBOARD</a></li>
-<li><a href="/logout" class="footerscrl rdot">LOGOUT</a></li>
+		<li><a href="/profiledetails">Profile Details</a></li>
+		<li><a href="/profile">Back to Admin Dashboard</a></li>
+<li><a href="/logout" class="footerscrl rdot">Logout</a></li>
 	</ul>
 </div>
 </nav>
@@ -190,17 +214,17 @@
   <div><img src="/images/raj_kishan_logo.png" class="zlogo"></div>
 	<div class="container">
 		<div class="page-header text-center">
-			<h1 class="head1"> PROFILE DETAILS</h1>
+			<h1 class="head1"> Profile Details</h1>
 		</div>
 		<div class= "col-sm-2"></div>
     <div class="col-sm-8">
       <div class="well">
 
-        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Your Role: </strong> <%= user.role %></p><hr>
-        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong> <%= user.username %></p><hr>
-        <p class="pitxt"><img src="/images/Address.png" class="rnd"><strong>Blockchain Address: </strong><span class="pitxt"><%= user.ethereumAddress %></span></p><hr>
+		  <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>Your Role: </strong><span class="test_coin"> <%= user.role %></span></p><hr>
+        <p class="pitxt"><img src="/images/User.png" class="rnd"><strong>User Name: </strong><span class="test_coin"> <%= user.username %></span></p><hr>
+        <p class="pitxt"><img src="/images/Address.png" class="rnd"><strong>Blockchain Address: </strong><span class="test_coin"><%= user.ethereumAddress %></span></p><hr>
 
-        <p class="pitxt"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong> <%= ethBalance %> RajasthanCoin</p><hr>
+		  <p class="pitxt"><img src="/images/Note.png" class="rnd"><strong>Balance: </strong><span class="test_coin"> <%= ethBalance %> RajasthanCoin</span></p><hr>
         <p class="pitxt"><img src="/images/KYC.png" class="rnd"><strong>SHA 256 Hash of KYC Docs </strong></p>
 				<table><tbody id="KYChash"></tbody></table><br>
         <!--<span class="pitxt"><%= user.kychash %></span><br>-->
@@ -250,7 +274,7 @@
 		var hashList = "<%=user.kychash%>".split(',');
 		var ethAddress = '<%= user.ethereumAddress %>';
 		for (i = 0; i < hashList.length; ++i) {
-			hashbody.innerHTML += '<tr><td><span class="pitxt">' + '&emsp;&emsp;&emsp;&emsp;Doc'+(i+1)+': '+CryptoJS.SHA256(hashList[i]).toString(CryptoJS.enc.Base64) + '</span></td><td><form action="/filedownload" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="kychash" value='+ hashList[i] + '></input><button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button></form></td><td><form action="/getKYChash" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="usrHash" value='+ ethAddress + '></input><input type="hidden" name="indx" value=' + (i+1) + '></input><button type="submit" data-toggle="modal" data-target="#bcdnldmodal" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Blockchain</button></form></td></tr>';
+			hashbody.innerHTML += '<tr><td><span class="pitxt">' + '&emsp;&emsp;&emsp;&emsp;Doc'+(i+1)+': '+CryptoJS.SHA256(hashList[i]).toString(CryptoJS.enc.Base64) + '</span></td><td><form action="/filedownload" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="kychash" value='+ hashList[i] + '></input><button type="submit" class="btn btn-warning kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button></form></td><td><form action="/getKYChash" method="post" enctype = "application/x-www-form-urlencoded"><input type="hidden" name="usrHash" value='+ ethAddress + '></input><input type="hidden" name="indx" value=' + (i+1) + '></input><button type="submit" data-toggle="modal" data-target="#bcdnldmodal" class="btn btn-warning kycdnld"><img src="/images/Download.png" class="dnldimg">Blockchain</button></form></td></tr>';
 
 
 			//hashbody.innerHTML +='<button type="submit" class="btn btn-default kycdnld"><img src="/images/Download.png" class="dnldimg">Server</button>';
