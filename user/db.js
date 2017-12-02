@@ -19,6 +19,7 @@ module.exports = {
   },
   createNewUser: function(account, hash, req, callback) {
     var newUser = new User();
+    console.log("Aadhaar", req.body.aadhaarNo);
     // set the user's credentials
     newUser.username = req.body.username;
     newUser.email = req.body.email;
@@ -26,7 +27,7 @@ module.exports = {
     newUser.role = req.body.role;
     newUser.kychash = hash;
     newUser.ethereumAddress = account;
-    newUser.aadhaar = req.body.aadhaarNo;
+    newUser.aadhar = req.body.aadhaarNo;
     newUser.save(callback);
   },
   updateUser: function(query, update) {
