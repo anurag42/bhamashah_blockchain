@@ -4,8 +4,7 @@ module.exports = {
   createNewRedeemEntry: function(req, res, callback) {
     var newTxn = new redeemTxn();
     console.log("createEntry");
-    newTxn.sender = req.body.address;
-    newTxn.dealer = req.body.dealer;
+    newTxn.dealer = req.body.address;
     newTxn.amount = req.body.amount;
     newTxn.txnID = "None";
     newTxn.status = "Awaiting deposit from kisaan";

@@ -9,6 +9,8 @@ var fertTokenContract = web3.eth.contract(fertTokenABI);
 var ipfs = require('../file/ipfs');
 web3.setProvider(new web3.providers.HttpProvider(config.web3Provider));
 
+var socketFunction = require('../socket/socket_io.js');
+
 module.exports = {
   recordIssuance: function(sender, recepients, tokenAmounts, callback) {
     console.log("Recording Issuance of fertilizer", sender, recepients, tokenAmounts);
@@ -92,6 +94,7 @@ function recordIssuanceCallback(error, result) {
     response.send(error);
     return;
   }
+  socketFunction.sendMessage(result);
   watchRecordIssuance(this.fertTokenInstance, this.sender, this.callback);
 }
 
@@ -115,6 +118,7 @@ function recordClaimCallback(error, result) {
     response.send(error);
     return;
   }
+  socketFunction.sendMessage(result);
   watchClaim(this.fertTokenInstance, this.claimID, this.callback);
 }
 
@@ -138,6 +142,7 @@ function recordRedemptionCallback(error, result) {
     response.send(error);
     return;
   }
+  socketFunction.sendMessage(result);
   watchRedemption(this.fertTokenInstance, this.sender, this.callback);
 }
 
